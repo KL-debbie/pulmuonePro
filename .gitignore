@@ -37,3 +37,4 @@ replay_pid*
 .LSOverride
 
 /build
+/bin/

@@ -1,0 +1,94 @@
+.modal-content {
+  border: none !important;
+}
+.nav-tabs .nav-item > button {
+  width: 100%;
+  font-size: 15px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.75px;
+  text-align: center;
+  color: #666;
+  height: 50px;
+}
+
+.nav-tabs .nav-item > button.active {
+  border-color: #fff #fff #333;
+  color: #333;
+}
+
+.modal-dialog-scrollable.modal-lg {
+  max-width: 680px;
+  height: 100%;
+  align-items: center;
+}
+
+
+.modal-dialog-scrollable.modal-lg .modal-content {
+  max-height: 700px;
+
+}
+
+.modal-content {
+  border-radius: 20px;
+}
+
+.modal-header {
+  padding: 20px 30px 22px;
+  border-bottom: 1px solid #e6e6e6;
+  align-items: center;
+}
+
+.modal-title {
+  font-family: 'Noto Sans KR';
+  font-size: 24px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.67;
+  letter-spacing: -1.8px;
+  text-align: left;
+  color: #333;
+}
+
+.modal-header .close {margin: 0; padding: 0; width: 24px; height: 24px; background: url("/pulmuonePro/customer/curation_image/ico-close01.png") no-repeat center; background-size: 100%;}
+
+.modal-body {
+  padding: 30px;
+}
+
+/*.modal-header {margin: 30px; padding: 0 0 10px; border-bottom: 1px solid #000;}*/
+/*.modal-body {padding: 0 30px 30px;}*/
+
+
+.pop-mainPopup .p-foot {
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.interest-button:before {
+  content: '찜하기';
+}
+.interest-button.active:before {
+  content: '찜하기 취소' !important;
+}
+
+.modal.show {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.modal-backdrop {
+  display: none !important;
+}
+
+/*.modal:nth-of-type(even) {*/
+/*  z-index: 1052 !important;*/
+/*}*/
+/*.modal-backdrop.show:nth-of-type(even) {*/
+/*  z-index: 1051 !important;*/
+/*}*/
+
