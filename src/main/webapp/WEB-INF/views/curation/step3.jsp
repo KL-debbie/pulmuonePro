@@ -1,33 +1,39 @@
 <%@ page  language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
 <title>풀무원 녹즙 | 맞춤큐레이션</title>
 <meta name="description" content="하루 한 병 건강한 습관 풀무원녹즙, 신선한 채소와 과일의 영양을 매일 아침 배송합니다.">
 <meta name="viewport"     content="width=device-width,initial-scale=1.0">
 <script src="/resources/assets/js/jquery-2.1.4.min.js"></script>
-<script src="/resources/assets/js/fdd.js"></script>
-<link rel="stylesheet" href="/resources/assets/css/curation.css">
-<link rel="stylesheet" href="/resources/assets/css/contents2.css">
-<link rel="stylesheet" href="/resources/assets/css/bootstrap-fdd.css">
-<link rel="stylesheet" href="/resources/assets/css/a-guide.css">
-<link rel="stylesheet" href="/resources/assets/css/owl.theme.default.css">
-<link rel="stylesheet" href="/resources/assets/css/owl.carousel.min.css">
-<!-- <link rel="stylesheet" href="/resources/assets/css/bootstrap.min.css"> -->
-<link rel="stylesheet" href="/resources/assets/css/layout_style.css">
-<link rel="shortcut icon" href="/resources/assets/images/pul_favicon.png">
+	<script src="/resources/assets/js/jquery.form.min.js"></script>
 
-<script src="/resources/assets/js/fdd.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js" ></script>
-<script src="/resources/assets/js/bootstrap.bundle.min.js"></script>
-<!-- <script src="/resources/assets/js/alert.js"></script> -->
-<script src="/resources/assets/js/request.js"></script>
-<script src="/resources/assets/js/clipboard.min.js"></script>
-<script src="/resources/assets/js/owl.carousel.min.js"></script>
-<script src="/resources/assets/js/jquery.form.min.js"></script>
-<link rel="stylesheet" href="/resources/assets/css/daterangepicker.css">
 
-<link rel="stylesheet" href="/resources/assets/css/style.css">
+	<link rel="stylesheet" href="/resources/assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/resources/assets/css/bootstrap-fdd.css">
+	<script src="/resources/assets/js/bootstrap.bundle.min.js"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js" ></script>
+	<script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js" integrity="sha384-DRe+1gYJauFEenXeWS8TmYdBmDUqnR5Rcw7ax4KTqOxXWd4NAMP2VPU5H69U7yP9" crossorigin="anonymous"></script>
+	<script src="/resources/assets/js/clipboard.min.js"></script>
+	<script src="/resources/assets/js/fdd.js"></script>
+	<script src="/resources/assets/js/request.js"></script>
+	<link rel="stylesheet" href="/resources/assets/css/contents_v1.css">
+
+
+	<link rel="stylesheet" href="/resources/assets/css/owl.carousel.min.css"/>
+	<link rel="stylesheet" href="/resources/assets/css/owl.theme.default.css"/>
+	<script src="/resources/assets/js/owl.carousel.min.js"></script>
+
+	<link rel="stylesheet" href="/resources/assets/css/layout_style.css">
+	<link rel="stylesheet" href="/resources/assets/css/a-guide.css">
+	<link rel="stylesheet" href="/resources/assets/css/contents2.css">
+
+	<link rel="stylesheet" href="/resources/assets/css/daterangepicker.css"/>
+	<script src="/resources/assets/js/daterangepicker.js"></script>
+	<link rel="stylesheet" href="/resources/assets/css/style.css">
+<link rel="shortcut icon" type="image/x-icon" href="/resources/assets/images/pul_favicon.png">
 <style>
 	.question-section > div {
 		display: none;
@@ -136,11 +142,11 @@
 				const req3 = JSON.parse(sessionStorage.getItem('req3'))
 
 					if (singleYn=='N') {
-						location.href="/customer/product/result/programs.do";
+						location.href='/customer/product/result/programs.do' +  '?singleYn=' + singleYn ;
 					}	else { 
-						location.href="/customer/product/result/products.do";
+						location.href="/customer/product/result/products.do" + '?singleYn=' + singleYn ;
 					}
-					
+
 				const data = {...req1, ...req2, ...req3}
 				const body = Object.entries(data).filter(v => !!parseInt(v[0])).map(
 						v => ({idx: v[0], answer: v[1]}));
@@ -150,6 +156,7 @@
 					if (bmi == 0 && req1.weight && req1.tallness) {
 						bmi = getBmi(req1.weight, req1.tallness)
 					}
+					
 // 					location.href = '/customer/product/result/products.do' + data.RESULT_MSG.execution.idx
 // 					+ '?singleYn=' + singleYn + '&bmi=' + bmi + '&questions='
 // 					+ data.RESULT_MSG.questions.join(',');
@@ -479,11 +486,11 @@ let timer;
   })
 </script>
 <div style="display: none" id="mini-side-nav">
-	<a href="/mypage/drink/drink"><img src="/resources/assets/images/quick1.png" alt=""></a>
-	<a id="quickChangeDrink" href="/mypage/drink/drink"><img src="/resources/assets/images/quick2.png" alt=""></a>
-	<a id="quickChangeSchedule" href="/mypage/drink/drink"><img src="/resources/assets/images/quick3.png" alt=""></a>
-	<a href="/mypage/drink/bill"><img src="/resources/assets/images/quick4.png" alt=""></a>
-	<a href="#"><img src="/resources/assets/images/quickTop.png" alt=""></a>
+	<a href="/mypage/drink/drink"><img src="/resources/images/ui/quick1.png" alt=""></a>
+	<a id="quickChangeDrink" href="/mypage/drink/drink"><img src="/resources/images/ui/quick2.png" alt=""></a>
+	<a id="quickChangeSchedule" href="/mypage/drink/drink"><img src="/resources/images/ui/quick3.png" alt=""></a>
+	<a href="/mypage/drink/bill"><img src="/resources/images/ui/quick4.png" alt=""></a>
+	<a href="#"><img src="/resources/images/ui/quickTop.png" alt=""></a>
 </div>
 </main>
 <%@ include file="/WEB-INF/views/layouts/footer.jsp" %>

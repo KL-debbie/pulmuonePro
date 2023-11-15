@@ -15,9 +15,16 @@ public class Kids implements CommandHandler{
 				
 			System.out.println("> Kids start..");
 			KidService kid = KidService.getInstance();
-			List<KidsDTO> list = kid.select();
+//			int num = Integer.parseInt( request.getParameter("data-product-preview") );
+			String num = request.getParameter("num");
+			System.out.println(num);
+//			System.out.println(num);
+			List<KidsDTO> list = kid.selectList();
+			List<KidsDTO> list2 = kid.select(24);
+			
 			
 			request.setAttribute("list", list);
+			request.setAttribute("list2", list2);
 		
 			return "/WEB-INF/views/curation/result/kids.jsp";
 	}

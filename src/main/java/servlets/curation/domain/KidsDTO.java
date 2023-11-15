@@ -20,5 +20,11 @@ public class KidsDTO {
 	   private String program_content;    	// 프로그램 내용 ok
 
 	   private String system_name;
+		private int price;
+		private int products_tag;
+		private String Products_size;
+		private String Products_sub_name;
+		private String origin_name;
+	   
 }
 

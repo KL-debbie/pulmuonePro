@@ -483,11 +483,16 @@ let timer;
   $(document).on("click", "[data-product-preview]", function (e) {
     var that = $(this);
     var id = parseInt(that.attr("data-product-preview"), 10);
+	console.log("시작");
+	console.log(that);
+	console.log(id);
+	console.log("종료");
     if (id) {
-      $("#productPreviewModal .modal-content").html("");
+//      $("#productPreviewModal .modal-content").html("");
       $("#productPreviewModal").addClass("loading").modal('show');
       $("#productPreviewModal .modal-content").load("/product/preview/" + id, function () {
-        $("#productPreviewModal").removeClass("loading");
+//	$("#productPreviewModal .modal-content").load("/customer/product/result/test.do?num=" + id, function () {
+       $("#productPreviewModal").removeClass("loading");
       });
     }
     e.preventDefault();

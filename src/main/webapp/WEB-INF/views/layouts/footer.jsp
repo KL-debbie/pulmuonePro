@@ -17,7 +17,7 @@
 		</ul>
 		<div class="row" style="padding-top: 10px">
 			<div class="address-area">
-				<img src="/resources/assets/images/f_logo.png"
+				<img src="/resources/assets/images/common/f_logo.png"
 					style="width: 104px;">
 				<div>
 					<b class="page-footer-title">㈜풀무원녹즙</b>

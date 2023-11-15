@@ -24,7 +24,7 @@ public class KidService {
 	      return instance;
 	   }
 
-	   public List<KidsDTO> select(){
+	   public List<KidsDTO> selectList(){
 	      //
 	      Connection con = null;
 	      try {
@@ -42,5 +42,23 @@ public class KidService {
 	      
 	   }// List select
 	   
+	   public List<KidsDTO> select(int num){
+		   Connection con = null;
+		      try {
+		         con = ConnectionProvider.getConnection();
+		          DAOImpl dao = DAOImpl.getInstance();
+		          
+		         List<KidsDTO> dto = null;
+		        
+		         dto = dao.select(con,  num);
+		        		 return dto;
+		         
+		      } catch (NamingException | SQLException e) { 
+		         //e.printStackTrace();  syso("ListService.select() 에러 : ")
+		         throw new RuntimeException(e);
+		      } finally {
+		         JdbcUtil.close(con);
+		      }
+	   }
 
 }//class

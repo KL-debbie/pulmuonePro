@@ -25,14 +25,14 @@ public class ProductService {
 	      return instance;
 	   }
 
-	   public List<CurationDTO> select(){
+	   public List<CurationDTO> selectPD(String path, int num){
 	      //
 	      Connection con = null;
 	      try {
 	         con = ConnectionProvider.getConnection();
 	          DAOImpl dao = DAOImpl.getInstance();
 	         List<CurationDTO> list = null;
-	         list = dao.selectPD(con);	        	
+	         list = dao.selectPD(con,path, num);	        	
 	         return list;
 	      } catch (NamingException | SQLException e) { 
 	         //e.printStackTrace();  syso("ListService.select() 에러 : ")

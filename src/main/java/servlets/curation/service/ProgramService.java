@@ -1,5 +1,6 @@
 package servlets.curation.service;
 
+import java.nio.file.Path;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
@@ -25,14 +26,15 @@ public class ProgramService {
 	      return instance;
 	   }
 
-	   public List<CurationDTO> select(){
+	   public List<CurationDTO> selectPG( String path, int num){
 	      //
 	      Connection con = null;
 	      try {
 	         con = ConnectionProvider.getConnection();
 	          DAOImpl dao = DAOImpl.getInstance();
 	         List<CurationDTO> list = null;
-	         list = dao.selectPG(con);	        	
+	         
+	         list = dao.selectPG(con, path, num);
 	         return list;
 	      } catch (NamingException | SQLException e) { 
 	         //e.printStackTrace();  syso("ListService.select() 에러 : ")

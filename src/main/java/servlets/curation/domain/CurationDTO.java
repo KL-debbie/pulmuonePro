@@ -22,5 +22,8 @@ public class CurationDTO {
 	private String lifestyle_change02;  // 정상
 	private String lifestyle_change03;  // 비만
 	private String System_name;
+	private int price;
+	private int products_tag;
+	private String Products_size;
+	private String Products_sub_name;
 }
-
