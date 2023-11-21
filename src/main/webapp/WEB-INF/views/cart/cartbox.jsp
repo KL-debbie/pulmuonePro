@@ -474,7 +474,7 @@
 				<img src="/file/download/product/cd399ead-476f-4c1d-bdcd-8b7868df04f9.png" alt="">
 			</a>
 			<div class="prd-info-select-amount">
-				<a href="/product/box/view.do?tag=${dto.products_tag }&eventIdx=" class="prd-info">
+				<a href="/product/box/view.do?tag=0072964&eventIdx=" class="prd-info">
 					<em>냉장상품</em>
 					<b class="prd-title">
 						프레시업 5가지맛 혼합 7입

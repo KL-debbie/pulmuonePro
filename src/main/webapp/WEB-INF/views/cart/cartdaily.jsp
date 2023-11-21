@@ -328,7 +328,7 @@
 													value="" checked="checked" data-itemcode=""> <label
 													for="chk-prd-${dto.products_no }"><span class="hide">해당제품선택</span></label>
 											</div> <a
-											href="/product/daily/view.do?tag=${dto.products_tag }&eventIdx="
+											href="/product/daily/view.do?tag=444&eventIdx="
 											class="prd-cart">
 												<div class="thumb">
 													<c:forEach items="${list }" var="dto">
