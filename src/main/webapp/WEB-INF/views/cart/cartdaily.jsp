@@ -320,7 +320,7 @@
 											삭제</button>
 									</div>
 									<ul class="prd-cart-list  order-item-list">
-										<li data-id="" data-itemcode="${dto.products_tag}"
+										<li data-id="" data-itemcode="${dto.products_no}"
 											class="order-item order-chk" data-price="1600">
 
 											<div class="checkbox chk-type3">
@@ -328,7 +328,7 @@
 													value="" checked="checked" data-itemcode=""> <label
 													for="chk-prd-${dto.products_no }"><span class="hide">해당제품선택</span></label>
 											</div> <a
-											href="/product/daily/view.do?tag=444&eventIdx="
+											href="/product/daily/view.do?tag=${dto.products_tag }&eventIdx="
 											class="prd-cart">
 												<div class="thumb">
 													<c:forEach items="${list }" var="dto">
