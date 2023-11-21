@@ -337,7 +337,7 @@ $(document).on("click", "#orderModal button", function (e) {
 					<div class="alert-area">
 						<h4>생활습관 바꾸기</h4>
 						<ul>
-							<li data-type="bmi">${list[0].lifestyle_change01 }</li>
+							<li data-type="bmi">${list[0].lifestyle_change02 }</li>
 							<li>대표적인 건강 위험 요인인 흡연! 자신과 사랑하는 사람들을 위해 금연을 시작합니다.</li>
 						</ul>
 					</div>

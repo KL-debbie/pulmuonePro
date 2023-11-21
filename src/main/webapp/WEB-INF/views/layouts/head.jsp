@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>풀무원 녹즙</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="shortcut icon" type="image/x-icon" href="/resources/assets/images/pul_favicon.png">
+<link rel="shortcut icon" type="image/x-icon" href="/resources/assets/images/SiSt.ico">
 <link rel="stylesheet" href="/resources/assets/css/notosanskr.css">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/resources/assets/css/owl.carousel.min.css">
