@@ -11,8 +11,8 @@ import javax.servlet.http.HttpSession;
 import auth.AuthInfo;
 import jdbc.connection.ConnectionProvider;
 import mvc.command.CommandHandler;
-import servlets.event.domain.CouponDTO;
-import servlets.event.domain.HaveCouponDTO;
+import servlets.coupon.domain.CouponDTO;
+import servlets.coupon.domain.HaveCouponDTO;
 import servlets.event.persistence.EventCouponDAO;
 import servlets.event.persistence.IEventCoupon;
 
@@ -36,7 +36,7 @@ public class EventCoupon implements CommandHandler {
             
             if (auth == null) {
                 // 로그인 정보가 없음, 사용자에게 로그인 요청 메시지 반환
-                response.getWriter().print("로그인 후 이용해주세요.");
+                response.getWriter().print("{\"message\":\"로그인 후 이용해주세요.\"}");
                 return null;
             }
 
@@ -60,6 +60,11 @@ public class EventCoupon implements CommandHandler {
                     haveCoupon.setCoupon_no(coupon.getCoupon_no());
 
                     int memberNo = auth.getMemberNo();
+                    if (eventCouponDAO.checkDuplicateCoupon(conn, coupon_no, memberNo)) {
+                        // 이미 수령한 쿠폰인 경우, 사용자에게 중복 수령 메시지 반환
+                        response.getWriter().print("{\"message\":\"이미 받은 쿠폰입니다.\"}");
+                        return null;
+                    }
                     haveCoupon.setMember_no(memberNo);
 
                     // 발급일은 당일로 설정
@@ -84,14 +89,14 @@ public class EventCoupon implements CommandHandler {
                     if(result > 0) {
                     	response.getWriter().print("{\"message\":\"쿠폰이 발급되었습니다.\"}");
                     } else {
-                        response.getWriter().print("{\"message\":\"쿠폰 발급에 실패하였습니다.\"}");
+                        response.getWriter().print("{\"message\":\"에러가 발상하였습니다.\"}");
                     }
 
                     return null;
            
                 } else {
                 	// 쿠폰 정보가 없음, 사용자에게 실패 메시지 반환
-                    response.getWriter().print("<script>alert('쿠폰 발급에 실패하였습니다.'); location.href='/coupon';</script>");
+                    response.getWriter().print("{\"message\":\"존재하지 않는 요청입니다.\"}");
                     return null;
                 }
             } finally {

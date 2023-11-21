@@ -60,7 +60,7 @@
                               <div class="checkout-prd-list">
                                  <div class="checkout-title-area">
 	                                 <%
-	                                    String [] prod = request.getParameterValues("productsNo");
+	                                    String [] prod = request.getParameterValues("qty");
 	                                    int prdCnt = prod.length;
 	                                 %>
                                     <strong class="list-amount">주문상품 <em class="prd-count" style="padding: 0 16px; margin-left: 2px"><%= prdCnt %></em></strong>
@@ -84,9 +84,9 @@
 	                                                      <em>${ prd.productsType }</em> <b class="prd-title">${ prd.productsName }</b>
 	                                                      <span class="volume">(${ prd.productsSize })</span>
 	                                                   </a>
-	                                                   <input type="hidden" data-count="0" value="${ param.productsCnt }" name="productsCnt">
+	                                                   <input type="hidden" data-count="0" value="${ param.qty }" name="productsCnt">
 	                                                   <div class="prd-select-amount">
-	                                                      <em>${ param.productsCnt }</em>개
+	                                                      <em>${ param.qty }</em>개
 	                                                   </div>
 	                                                </div>
 	                                             </div>
@@ -95,14 +95,14 @@
 	                                                <div></div>
 	                                                <div class="price-info">
 	                                                   <em class="before-price">
-	                                                      <em data-print-price="${ prd.price * param.productsCnt }">
-	                                                         <fmt:formatNumber value="${ prd.price * param.productsCnt }" type="number"></fmt:formatNumber>
+	                                                      <em data-print-price="${ prd.price * param.qty }">
+	                                                         <fmt:formatNumber value="${ prd.price * param.qty }" type="number"></fmt:formatNumber>
 	                                                      </em>
 	                                                      <span>원</span>
 	                                                   </em>
 	                                                   <b class="now-price">
-	                                                      <b data-print-price="${ prd.eventPrice * param.productsCnt }">
-	                                                         <fmt:formatNumber value="${ prd.eventPrice * param.productsCnt }" type="number"></fmt:formatNumber>
+	                                                      <b data-print-price="${ prd.eventPrice * param.qty }">
+	                                                         <fmt:formatNumber value="${ prd.eventPrice * param.qty }" type="number"></fmt:formatNumber>
 	                                                      </b>
 	                                                      <span>원</span>
 	                                                   </b>
@@ -272,8 +272,7 @@
 					</div>
 	
 					<div class="modal-body" style="max-height: 80vh; overflow-y: scroll">
-						<div class="drinking-list address" style="margin: 0">
-						</div>
+						<div class="drinking-list address" style="margin: 0"></div>
 						<div style="padding: 20px">
 		                    <button class="btn-default btn-white" style="width: 100%">더보기</button>
 		                </div>
@@ -281,7 +280,6 @@
 					
 				</div>
 			</div>
-		</div>
 		</div>
 		
 		<div class="modal fade" id="alertModal" tabindex="-1" aria-labelledby="alertModalLabel" style="display: none;" aria-hidden="true">
@@ -292,7 +290,7 @@
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						</button>
 					</div>
-					<div class="modal-body" style="max-height: 80vh; overflow-y: scroll; padding: 0px;">
+					<div class="modal-body">
 						<div class="drinking-list address" style="margin: 0"></div>
 					</div>
 					<button type="button" class="modal-footer" data-dismiss="modal">확인</button>
@@ -594,7 +592,9 @@
 					        } else {
 					        	root.next().hide();
 					        } // if
+					        
 							$('#addressModal').removeClass("loading")
+							
 						} else if (pageNo == 0) {
 					    	alert('등록된 주소록이 없습니다.');
 							$b('#addressModal').modal("hide");
@@ -637,6 +637,7 @@
 		      	} // if
 		    } // if
 		})
+		
 		$(document).on("click", "#top_move_pointer", function() {
 			$(document).scrollTop(0);
 		});

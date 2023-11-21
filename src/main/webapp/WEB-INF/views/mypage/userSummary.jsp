@@ -28,7 +28,7 @@
 						
 						<ul class="stat-wrapper">
 							<li>
-								<a href="/mypage/drink/drink" class="item">
+								<a href="/mypage/order/daily.do?drinkingType=Y" class="item">
 									<label>매일배송</label>
 									<span>1</span>
 								</a>
@@ -68,9 +68,7 @@
 						<div class="box-partition">
 							<div class="part">
 								<div class="part-head" style="margin-bottom:17px;">
-									<a href="/mypage/drink/drink">
-										매일배송 음용정보
-									</a>
+									<a href="/mypage/order/daily.do?drinkingType=Y">매일배송 음용정보</a>
 								</div>
 								
 								<div class="box-layout" style="margin-bottom:6px;">
@@ -78,9 +76,9 @@
 										<div class="half-area nickname-format">
 												<label>기본</label>
 											<h5>음용1</h5>
-											<span>230000234094</span>
+											<span>1</span>
 										</div>
-										<a href="/mypage/drink/drinks/230000234094/23812" class="rounded-button">상세보기</a>
+										<a href="/mypage/order/dailyView.do?orderNo=1" class="rounded-button">상세보기</a>
 									</div>
 									<div style="padding:20px 25px 20px 0;">
 										<div class="half-area">

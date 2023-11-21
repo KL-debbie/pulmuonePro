@@ -23,5 +23,8 @@ public interface IEventCommnet {
 	
 	int selectCount(Connection con, int event_no) throws SQLException;
 
+	// 중복확인
+	boolean duplicateParticipation(Connection conn, int member_no, int event_no) throws SQLException;
+
 
 }

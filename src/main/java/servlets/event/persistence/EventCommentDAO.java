@@ -125,5 +125,21 @@ public class EventCommentDAO implements IEventCommnet{
             if (stmt != null) stmt.close();
         }
     }
+    
+    @Override
+    public boolean duplicateParticipation(Connection conn, int member_no, int event_no) throws SQLException {
+        String sql = "SELECT COUNT(*) FROM event_comment WHERE member_no = ? AND event_no = ?";
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, member_no);
+            pstmt.setInt(2, event_no);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt(1) > 0;
+                }
+            }
+        }
+        return false;
+    }
+
 
 }

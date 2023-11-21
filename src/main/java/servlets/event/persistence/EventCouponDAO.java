@@ -6,12 +6,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Calendar;
 
-import servlets.event.domain.CouponDTO;
-import servlets.event.domain.HaveCouponDTO;
+import servlets.coupon.domain.CouponDTO;
+import servlets.coupon.domain.HaveCouponDTO;
 
 public class EventCouponDAO implements IEventCoupon {
 
 	// 쿠폰 발급
+	@Override
 	public int setCoupon(Connection conn, HaveCouponDTO coupon) throws SQLException {
 	    String sql = "INSERT INTO have_coupon (coupon_no, member_no, issue_date, expiry_date, used) VALUES (?, ?, ?, ?, ?)";
 	    try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -25,6 +26,7 @@ public class EventCouponDAO implements IEventCoupon {
 	}
 	
 	// 쿠폰 확인
+	@Override
 	public CouponDTO getCoupon(Connection conn, int coupon_no) throws SQLException {
 	    String sql = "SELECT * FROM coupon WHERE coupon_no = ?";
 	    try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -46,6 +48,17 @@ public class EventCouponDAO implements IEventCoupon {
 	    return null;
 	}
 	
+	// 중복 체크
+	@Override
+	public boolean checkDuplicateCoupon(Connection conn, int couponNo, int memberNo) throws SQLException {
+	    String sql = "SELECT * FROM have_coupon WHERE coupon_no = ? AND member_no = ?";
+	    try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+	        pstmt.setInt(1, couponNo);
+	        pstmt.setInt(2, memberNo);
+	        ResultSet rs = pstmt.executeQuery();
+	        return rs.next(); // 중복된 쿠폰 수령 이력이 있는지 확인
+	    }
+	}
 	
 }
 

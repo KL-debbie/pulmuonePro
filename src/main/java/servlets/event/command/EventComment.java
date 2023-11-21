@@ -87,18 +87,33 @@ public class EventComment implements CommandHandler{
         	    commentDTO.setName(authInfo.getName());
 
         	    try (Connection conn = ConnectionProvider.getConnection()) {
-        	        int result = commentDAO.insert(conn, commentDTO);
+        	    	
+        	    	 boolean isDuplicated = commentDAO.duplicateParticipation(conn, authInfo.getMemberNo(), event_no);
+        	    	
+        	    	 if (isDuplicated) {
+        	            // 댓글이 이미 존재하는 경우
+        	            JSONObject jsonResponse = new JSONObject();
+        	            jsonResponse.put("result", "already_participated");
 
-        	        JSONObject jsonResponse = new JSONObject();
-        	        if(result > 0) {
-        	            jsonResponse.put("result", "success");
+        	            response.setContentType("application/json; charset=UTF-8");
+        	            response.getWriter().write(jsonResponse.toString());
         	        } else {
-        	            jsonResponse.put("result", "fail");
+        	        	// 댓글이 존재하지 않는 경우, 댓글을 저장
+        	        	int result = commentDAO.insert(conn, commentDTO);
+        	        	
+        	        	JSONObject jsonResponse = new JSONObject();
+        	        	if(result > 0) {
+        	        		jsonResponse.put("result", "success");
+        	        	} else {
+        	        		jsonResponse.put("result", "fail");
+        	        	}
+        	        	
+        	        	response.setContentType("application/json; charset=UTF-8");
+        	        	response.getWriter().write(jsonResponse.toString());
+        	        	
         	        }
-
-        	        response.setContentType("application/json; charset=UTF-8");
-        	        response.getWriter().write(jsonResponse.toString());
         	    }
+        	    
         	}
 
 

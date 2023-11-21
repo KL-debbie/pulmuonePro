@@ -191,13 +191,22 @@ $(document).ready(function() {
 <script>
 $(document).ready(function() {
     $('#write-review').click(function(e) {
-        e.preventDefault(); // 버튼의 기본 동작을 중단합니다.
+        e.preventDefault();
         var authInfo = '<%= session.getAttribute("auth") %>';
         if (authInfo == "null") {
             // 로그인이 필요한 경우
             $('#loginModal').modal('show');
         } else {
             postComment();
+        }
+        
+        
+    });
+    
+    $('#content').keydown(function(e) {
+        if (e.keyCode == 13) {
+            e.preventDefault();
+            $('#write-review').click();
         }
     });
 
@@ -218,6 +227,9 @@ $(document).ready(function() {
                     // 댓글 등록 성공
                     alert('댓글이 등록되었습니다.');
                     location.reload();
+                } else if (response.result == "already_participated") {
+                    // 이미 참여한 경우
+                    alert('이미 참여한 이벤트입니다.');
                 } else {
                     // 그 외 실패 경우
                     console.error("댓글 등록 실패");

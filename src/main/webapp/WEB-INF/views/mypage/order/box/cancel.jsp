@@ -243,7 +243,7 @@
 								<label>쿠폰할인금액</label>
 								<div class="price-tag xs">
 									<p class="value" style="color:red;">
-										<fmt:formatNumber value="${ -boxPay.boxDiscountPrice }" type="number"></fmt:formatNumber>
+										<fmt:formatNumber value="${ boxPay.boxDiscountPrice }" type="number"></fmt:formatNumber>
 									</p>
 									<span class="unit">원</span>
 								</div>

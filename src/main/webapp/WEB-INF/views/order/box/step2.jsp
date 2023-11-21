@@ -163,7 +163,7 @@
 									</dl>
 									<div class="btn-area">
 										<button style="margin: 0px 14px; height: 60px" type="button" onclick="location.href='/'" class="btn-default btn-white">메인으로</button>
-										<button style="margin: 0px 14px; height: 60px" type="button" onclick="location.href='/mypage/order/box'" class="btn-default">주문내역</button>
+										<button style="margin: 0px 14px; height: 60px" type="button" onclick="location.href='/mypage/order/box/orderBox.do'" class="btn-default">주문내역</button>
 									</div>
 								</div>
 							</div>

@@ -7,9 +7,14 @@ import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import auth.AuthInfo;
 import mvc.command.CommandHandler;
 import servlets.order.domain.DrkOrderProductDTO;
+import servlets.order.domain.OrderCouponDTO;
+import servlets.order.domain.OrderMemberInfoDTO;
+import servlets.order.service.BoxOrderService;
 import servlets.order.service.DrkOrderService;
 
 public class DailyOrder implements CommandHandler {
@@ -17,6 +22,11 @@ public class DailyOrder implements CommandHandler {
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("> DailyOrder.process..");
+		
+		// > 유저 정보 가져오기
+		HttpSession session = request.getSession(false);
+		AuthInfo member = (AuthInfo) session.getAttribute("auth");
+		int memberNo = member.getMemberNo();
 		
 		// > 주문 내용 가져오기
 		
@@ -57,10 +67,19 @@ public class DailyOrder implements CommandHandler {
         
         // > service 객체 생성
         DrkOrderService service = DrkOrderService.getInstanse();
+        BoxOrderService bService = BoxOrderService.getInstanse();
+        
         
         // 1. 상품 정보 출력
         ArrayList<DrkOrderProductDTO> prdList = service.selectProducts(itemCodeList);
         request.setAttribute("prdList", prdList);
+        
+        // 2. 이름 및 전화번호
+        OrderMemberInfoDTO miDto = bService.getNameAndTel(memberNo);
+		request.setAttribute("miDto", miDto);
+		
+		// 쿠폰 정보 가져오기
+		
         
         
 		return "/WEB-INF/views/order/daily/step1.jsp";

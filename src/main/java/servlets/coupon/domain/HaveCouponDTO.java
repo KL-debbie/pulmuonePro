@@ -1,4 +1,4 @@
-package servlets.event.domain;
+package servlets.coupon.domain;
 
 import java.sql.Date;
 

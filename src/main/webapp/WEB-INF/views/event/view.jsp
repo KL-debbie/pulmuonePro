@@ -13,8 +13,8 @@
 					<a href="/">홈</a> <a href="/event/event/list.do">이벤트</a>
 				</div>
 				<div class="cont-event-area">
+				
 					<%@ include file="/WEB-INF/views/layouts/event/title_tab_area.jsp"%>
-
 
 					<div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-t">
 						<!--S:이벤트 상세-->
@@ -34,26 +34,6 @@
 								    <i class="ico ico-share"></i> <span class="offscreen">공유하기</span>
 								</button>
 							</div>
-							
-							<%-- 
-							<div class="board-cont event-board" style="position: relative; min-height: 100px;">
-								<div id="content-editor-area" style="line-height:0;">
-								    <c:forEach var="image" items="${eventView.images}">
-								        <c:choose>
-								            <c:when test="${not empty image.img_link}">
-								                <a href="${image.img_link}" target="_blank">
-								                    <img src="${image.img_path}" title="${image.origin_name}" class="${image.system_name}" style="line-height: 0;">
-								                </a>
-								            </c:when>
-								            <c:otherwise>
-								                <img src="${image.img_path}" title="${image.origin_name}" class="${image.system_name}" style="line-height: 0;">
-								            </c:otherwise>
-								        </c:choose>
-								        <br style="clear: both;">
-								    </c:forEach>
-								</div>
-							</div>			
-							 --%>
 							 
 							<%@ include file="/WEB-INF/views/layouts/event/event_view.jsp"%>
 
@@ -72,6 +52,7 @@
 		</div>
 
 		<%@ include file="/WEB-INF/views/layouts/footer.jsp"%>
+		<%@ include file="/WEB-INF/views/ui/footermodal.jsp"%>
 
 	</div>
 
@@ -84,8 +65,8 @@ $(document).ready(function() {
   if (event_no == 1) {
     var newElement = `
       <div style="background:#454545; text-align:center;">
-        <a href="/product/daily" style="display:inline-block;"><img src="/resources/assets/images/event/view/event_369_button01.png" style="line-height:0;"></a>
-        <a href="/member/regist/type" style="display:inline-block;"><img src="/resources/assets/images/event/view/event_369_button02.png" style="line-height:0;"></a>
+        <a href="/product/daily/dailylist.do" style="display:inline-block;"><img src="/resources/assets/images/event/view/event_369_button01.png" style="line-height:0;"></a>
+        <a href="/member/regist/type.do" style="display:inline-block;"><img src="/resources/assets/images/event/view/event_369_button02.png" style="line-height:0;"></a>
       </div>`;
 
     // 이미 생성된 button1, button2 이미지 태그를 제거

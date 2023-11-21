@@ -1,4 +1,4 @@
-package servlets.event.domain;
+package servlets.coupon.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,7 +13,7 @@ public class CouponDTO {
 
 	private int coupon_no;
 	private String coupon_name; 
-	private int discount;
+	private double discount;
 	private int delivery_type;
 	private int duplication;
 	private int use_month;
